@@ -40,6 +40,10 @@ class Day1Dial:
 
         if direction == 'L':
             self.rotate_left(value)
-
-        if direction == 'R':
+        elif direction == 'R':
             self.rotate_right(value)
+
+    def receive_instructions(self, instructions):
+        """"""
+        for instruction in instructions:
+            self.receive_instruction(instruction)

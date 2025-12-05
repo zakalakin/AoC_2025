@@ -177,3 +177,23 @@ class TestDay1Dial:
         day1_dial.receive_instruction("R2")
         assert day1_dial.position == 0
         assert day1_dial.zero_count == 2
+
+    def test_receive_instructions(self):
+        """s"""
+        instructions = [
+            "L68",
+            "L30",
+            "R48",
+            "L5",
+            "R60",
+            "L55",
+            "L1",
+            "L99",
+            "R14",
+            "L82"
+        ]
+
+        day1_dial = Day1Dial(50, 0)
+        day1_dial.receive_instructions(instructions)
+        assert day1_dial.position == 32
+        assert day1_dial.zero_count == 3
