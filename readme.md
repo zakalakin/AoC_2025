@@ -30,4 +30,9 @@ Fun, rushed, tdd, pythons, red green refactor,
 - `poetry lock` regenerate lock file, managed by poetry`
 - `poetry version minor` - bump version of current project
 
+## PyTest
+All test classes must start `test`
+All test methods must start `test_`
+`poetry run python -m pytest file`
+
 # To Do
