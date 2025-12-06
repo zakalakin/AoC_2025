@@ -7,10 +7,10 @@ class Day1Dial:
     A 100 digit dial that can be rotated and tracks how often it lands on zero after a rotation.
     """
     dial_size = 100
-
-    def __init__(self, position, zero_count):
+    zero_count = 0
+    zero_click = 0
+    def __init__(self, position):
         self.position = position
-        self.zero_count = zero_count
 
     def normalised_position(self):
         """Numbers roll, 0-99"""

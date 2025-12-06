@@ -8,19 +8,19 @@ class TestDay1Dial:
 
     def test_init(self):
         """s"""
-        day1_dial = Day1Dial(0, 0)
+        day1_dial = Day1Dial(0)
         assert day1_dial.position == 0
         assert day1_dial.zero_count == 0
         assert day1_dial.dial_size == 100
 
-        day1_dial = Day1Dial(55, 24)
+        day1_dial = Day1Dial(55)
         assert day1_dial.position == 55
-        assert day1_dial.zero_count == 24
+        assert day1_dial.zero_count == 0
         assert day1_dial.dial_size == 100
 
     def test_zero_count(self):
         """s"""
-        day1_dial = Day1Dial(0, 0)
+        day1_dial = Day1Dial(0)
         day1_dial.zero_count = 0
 
         assert day1_dial.zero_count == 0
@@ -40,7 +40,7 @@ class TestDay1Dial:
 
     def test_normalise(self):
         """s"""
-        day1_dial = Day1Dial(0, 0)
+        day1_dial = Day1Dial(0)
 
         assert day1_dial.position == 0
 
@@ -73,7 +73,7 @@ class TestDay1Dial:
 
     def test_rotate_right(self):
         """s"""
-        day1_dial = Day1Dial(0, 0)
+        day1_dial = Day1Dial(0)
 
         assert day1_dial.position == 0
 
@@ -101,7 +101,7 @@ class TestDay1Dial:
 
     def test_rotate_left(self):
         """s"""
-        day1_dial = Day1Dial(0, 0)
+        day1_dial = Day1Dial(0)
 
         assert day1_dial.position == 0
 
@@ -129,12 +129,12 @@ class TestDay1Dial:
 
     def test_receive_instruction(self):
         """s"""
-        day1_dial = Day1Dial(0, 0)
+        day1_dial = Day1Dial(0)
         day1_dial.receive_instruction("R55")
         assert day1_dial.position == 55
         assert day1_dial.zero_count == 0
 
-        day1_dial = Day1Dial(0, 0)
+        day1_dial = Day1Dial(0)
         day1_dial.receive_instruction("R50")
         assert day1_dial.position == 50
         assert day1_dial.zero_count == 0
@@ -145,12 +145,12 @@ class TestDay1Dial:
         assert day1_dial.position == 50
         assert day1_dial.zero_count == 1
 
-        day1_dial = Day1Dial(0, 0)
+        day1_dial = Day1Dial(0)
         day1_dial.receive_instruction("L20")
         assert day1_dial.position == 80
         assert day1_dial.zero_count == 0
 
-        day1_dial = Day1Dial(0, 0)
+        day1_dial = Day1Dial(0)
         day1_dial.receive_instruction("L25")
         assert day1_dial.position == 75
         assert day1_dial.zero_count == 0
@@ -161,7 +161,7 @@ class TestDay1Dial:
         assert day1_dial.position == 90
         assert day1_dial.zero_count == 1
 
-        day1_dial = Day1Dial(0, 0)
+        day1_dial = Day1Dial(0)
         day1_dial.receive_instruction("L15")
         assert day1_dial.position == 85
         assert day1_dial.zero_count == 0
@@ -193,7 +193,7 @@ class TestDay1Dial:
             "L82"
         ]
 
-        day1_dial = Day1Dial(50, 0)
+        day1_dial = Day1Dial(50)
         day1_dial.receive_instructions(instructions)
         assert day1_dial.position == 32
         assert day1_dial.zero_count == 3
