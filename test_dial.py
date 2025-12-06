@@ -99,6 +99,44 @@ class TestDay1Dial:
         day1_dial.rotate_right(555)
         assert day1_dial.position == 55
 
+    def test_check_zero_click(self):
+        """d"""
+        day1_dial = Day1Dial(0)
+        day1_dial.check_zero_click("R", 55)
+        assert day1_dial.zero_click == 0
+
+        day1_dial = Day1Dial(0)
+        day1_dial.check_zero_click("L", 55)
+        assert day1_dial.zero_click == 0
+
+        day1_dial = Day1Dial(50)
+        day1_dial.check_zero_click("R", 49)
+        assert day1_dial.zero_click == 0
+
+        day1_dial = Day1Dial(50)
+        day1_dial.check_zero_click("R", 50)
+        assert day1_dial.zero_click == 1
+
+        day1_dial = Day1Dial(50)
+        day1_dial.check_zero_click("L", 49)
+        assert day1_dial.zero_click == 0
+
+        day1_dial = Day1Dial(50)
+        day1_dial.check_zero_click("L", 50)
+        assert day1_dial.zero_click == 1
+
+        day1_dial = Day1Dial(0)
+        day1_dial.check_zero_click("L", 700)
+        assert day1_dial.zero_click == 7
+
+        day1_dial = Day1Dial(35)
+        day1_dial.check_zero_click("L", 400)
+        assert day1_dial.zero_click == 4
+
+        day1_dial = Day1Dial(0)
+        day1_dial.check_zero_click("R", 800)
+        assert day1_dial.zero_click == 8
+
     def test_rotate_left(self):
         """s"""
         day1_dial = Day1Dial(0)
@@ -133,50 +171,55 @@ class TestDay1Dial:
         day1_dial.receive_instruction("R55")
         assert day1_dial.position == 55
         assert day1_dial.zero_count == 0
+        assert day1_dial.zero_click == 0
 
         day1_dial = Day1Dial(0)
         day1_dial.receive_instruction("R50")
         assert day1_dial.position == 50
         assert day1_dial.zero_count == 0
-        day1_dial.receive_instruction("R50")
-        assert day1_dial.position == 0
-        assert day1_dial.zero_count == 1
-        day1_dial.receive_instruction("R50")
-        assert day1_dial.position == 50
-        assert day1_dial.zero_count == 1
+        assert day1_dial.zero_click == 0
 
         day1_dial = Day1Dial(0)
         day1_dial.receive_instruction("L20")
         assert day1_dial.position == 80
         assert day1_dial.zero_count == 0
+        assert day1_dial.zero_click == 0
 
         day1_dial = Day1Dial(0)
         day1_dial.receive_instruction("L25")
         assert day1_dial.position == 75
         assert day1_dial.zero_count == 0
+        assert day1_dial.zero_click == 0
         day1_dial.receive_instruction("L75")
         assert day1_dial.position == 0
         assert day1_dial.zero_count == 1
+        assert day1_dial.zero_click == 1
         day1_dial.receive_instruction("L10")
         assert day1_dial.position == 90
         assert day1_dial.zero_count == 1
+        assert day1_dial.zero_click == 1
 
         day1_dial = Day1Dial(0)
         day1_dial.receive_instruction("L15")
         assert day1_dial.position == 85
+        assert day1_dial.zero_click == 0
         assert day1_dial.zero_count == 0
         day1_dial.receive_instruction("R20")
         assert day1_dial.position == 5
         assert day1_dial.zero_count == 0
+        assert day1_dial.zero_click == 1
         day1_dial.receive_instruction("L5")
         assert day1_dial.position == 0
         assert day1_dial.zero_count == 1
+        assert day1_dial.zero_click == 2
         day1_dial.receive_instruction("L2")
         assert day1_dial.position == 98
         assert day1_dial.zero_count == 1
+        assert day1_dial.zero_click == 2
         day1_dial.receive_instruction("R2")
         assert day1_dial.position == 0
         assert day1_dial.zero_count == 2
+        assert day1_dial.zero_click == 3
 
     def test_receive_instructions(self):
         """s"""
@@ -197,3 +240,4 @@ class TestDay1Dial:
         day1_dial.receive_instructions(instructions)
         assert day1_dial.position == 32
         assert day1_dial.zero_count == 3
+        assert day1_dial.zero_click == 6
