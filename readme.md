@@ -1,18 +1,17 @@
-# about
+# About
 https://adventofcode.com/2025
 
-Fun, rushed, tdd, pythons, red green refactor,
+Python | Advent Of Code | For-Fun | Test Driven Design (TDD) | Red-Green Refactor
 
-# Python
-## Install python
+# Setup Project
+## Install Python
 - [Download Python 3.14.0](https://www.python.org/ftp/python/3.14.0/python-3.14.0-amd64.exe)
 - Run the .exe
 - Check `Use admin privileges when install` and `add python.exe to PATH` and install
 - Verify python installation `where.exe python`
 - Restart IDE
 
-# POETRY
-## Install
+## Install Poetry
 - `python -m pip install pipx`
 - `python -m pipx install poetry`
 - `pipx ensurepath`
@@ -20,19 +19,33 @@ Fun, rushed, tdd, pythons, red green refactor,
 - Verify poetry installation `where.exe poetry`
 - Restart IDE
 
-## Examples
+## Run Poetry
 - `poetry install` - installs all dependencies in pyproject.toml
-- `poetry env activate` - go into virtual env
+
+# Execute Project
+Select correct python interpreter, `poetry env activate`. VS select interpreter: `ctrl` + `shift` + `p`
+
+Run PyTest `poetry run python -m pytest {file}`
+
+Run from main.py
+
+# Maintain Project
+## Poetry Examples
+- `poetry install` - installs all dependencies in pyproject.toml
+- `poetry env activate` - Go into virtual env
 - `poetry add` - Add new dependcies to `pyProject.toml` via poetry. E.g. `poetry add pytest`
-- `poetry add ...@2.212` add new dependencies with given version constraints. `@` exact, `^` most recent until major version. `~` up to latest until minor version
-- `poetry show` - show what poetry has installed. `poetry show ...` show details of given package
-- `poetry remove ...` - remove package
-- `poetry lock` regenerate lock file, managed by poetry`
-- `poetry version minor` - bump version of current project
+- `poetry add ...@2.212` Add new dependencies with given version constraints. `@` exact, `^` most recent until major version. `~` up to latest until minor version
+- `poetry show` - Show what poetry has installed. `poetry show ...` Show details of given package
+- `poetry remove ...` - Remove package
+- `poetry lock` Regenerate lock file, managed by poetry`
+- `poetry version minor` - Bump version of current project
 
 ## PyTest
+Used for unit tests/integration tests. A test version of each functional modules (files)/class/method should exist:
+All test files should start `test_`
 All test classes must start `test`
 All test methods must start `test_`
-`poetry run python -m pytest file`
+
+Run PyTest `poetry run python -m pytest {file}`
 
 # To Do
